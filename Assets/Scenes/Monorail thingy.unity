@@ -2311,7 +2311,6 @@ MonoBehaviour:
   Body: {fileID: 2400990380678403248}
   FBogey: {fileID: 1205173615}
   BBogey: {fileID: 135905687}
-  BodyTransform: {fileID: 0}
 --- !u!1 &1120979332
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4092,6 @@ MonoBehaviour:
   Body: {fileID: 42485545}
   FBogey: {fileID: 934052725362479771}
   BBogey: {fileID: 5576618838465964782}
-  BodyTransform: {fileID: 0}
 --- !u!1 &2050824197
 GameObject:
   m_ObjectHideFlags: 0
