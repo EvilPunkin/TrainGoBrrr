@@ -12,7 +12,7 @@ public class TrainJoint : MonoBehaviour {
     void FixedUpdate() {
         Body.transform.position = new Vector3((FBogey.transform.position.x+BBogey.transform.position.x)/2, ((FBogey.transform.position.y+BBogey.transform.position.y)/2)+2, (FBogey.transform.position.z+BBogey.transform.position.z)/2);
 
-        Body.transform.eulerAngles = new Vector3((FBogey.transform.eulerAngles.x+BBogey.transform.eulerAngles.x)/2, FBogey.transform.eulerAngles.y-90, FBogey.transform.eulerAngles.z);
+        Body.transform.eulerAngles = new Vector3((FBogey.transform.eulerAngles.x+BBogey.transform.eulerAngles.x)/2, ((FBogey.transform.eulerAngles.y+BBogey.transform.eulerAngles.y)/2)-90, FBogey.transform.eulerAngles.z);
         Debug.Log((FBogey.transform.eulerAngles.x+BBogey.transform.eulerAngles.x)/2);
     }
 }
