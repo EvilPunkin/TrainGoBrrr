@@ -3,36 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainController : MonoBehaviour {
-
     public List<AxleInfo> axleInfos;
+    public List<TransformInfo> transformInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    public float maxBrakeTorque;
+    public float suspension;
 
     public void FixedUpdate() {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
+        float brake = maxBrakeTorque * Input.GetAxis("Horizontal");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-            
         foreach (AxleInfo axleInfo in axleInfos) {
-            if (axleInfo.steering) {
-                axleInfo.leftWheel.steerAngle = steering;
-                axleInfo.rightWheel.steerAngle = steering;
-            }
             if (axleInfo.motor) {
-                axleInfo.leftWheel.motorTorque = motor;
-                axleInfo.rightWheel.motorTorque = motor;
+                axleInfo.lWheel.motorTorque = motor;
+                axleInfo.rWheel.motorTorque = motor;
             }
+            if (axleInfo.brake) {
+                axleInfo.lWheel.brakeTorque = brake;
+                axleInfo.rWheel.brakeTorque = brake;
+            }
+            if (axleInfo.steering) {
+                axleInfo.lWheel.steerAngle = steering;
+                axleInfo.rWheel.steerAngle = steering;
+            }
+            if (axleInfo.suspension) {
+                axleInfo.lWheel.suspensionDistance = suspension;
+                axleInfo.rWheel.suspensionDistance = suspension;
+            }
+            if (!axleInfo.suspension) {
+                axleInfo.lWheel.suspensionDistance = 0;
+                axleInfo.rWheel.suspensionDistance = 0;
+            }
+            // foreach (TransformInfo transformInfo in transformInfos) {
+            //     transformInfo.transform.rotation = axleInfo.lWheel.transform.rotation *= Quaternion.Euler(0, 90, 0);
+            // }
         }
     }
 }
-
 [System.Serializable]
 public class AxleInfo {
-    public WheelCollider leftWheel;
-    public WheelCollider rightWheel;
+    public WheelCollider lWheel;
+    public WheelCollider rWheel;
     public bool motor; // is this wheel attached to motor?
+    public bool brake; // does this wheel apply steer angle?
     public bool steering; // does this wheel apply steer angle?
+    public bool suspension;
+}
+[System.Serializable]
+public class TransformInfo {
+    public Transform transform;
 }
 
+//Quaternion.Slerp(, axleInfo.rWheel.transform.rotation, 1)
 // void Start()
 // {
 //     Rigidbody = GetComponent<Rigidbody>();
@@ -59,3 +82,19 @@ public class AxleInfo {
 //         Debug.Log("Right: " + rightHit.distance);
 //     }
 // }
+
+//  public void ApplyLocalPositionToVisuals(WheelCollider collider)
+//     {
+//         if (collider.transform.childCount == 0) {
+//             return;
+//         }
+     
+//         Transform visualWheel = collider.transform.GetChild(0);
+     
+//         Vector3 position;
+//         Quaternion rotation;
+//         collider.GetWorldPose(out position, out rotation);
+     
+//         visualWheel.transform.position = position;
+//         visualWheel.transform.rotation = rotation;
+//     }
