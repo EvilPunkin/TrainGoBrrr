@@ -5,6 +5,8 @@ using UnityEngine;
 public class TrainController : MonoBehaviour {
     public List<AxleInfo> axleInfos;
     public List<TransformInfo> transformInfos;
+    public List<CouplerInfo> couplerInfos;
+
     public float maxMotorTorque;
     public float maxSteeringAngle;
     public float maxBrakeTorque;
@@ -35,11 +37,17 @@ public class TrainController : MonoBehaviour {
                 axleInfo.lWheel.suspensionDistance = 0;
                 axleInfo.rWheel.suspensionDistance = 0;
             }
-            // foreach (TransformInfo transformInfo in transformInfos) {
-            //     transformInfo.transform.rotation = axleInfo.lWheel.transform.rotation *= Quaternion.Euler(0, 90, 0);
-            // }
         }
+        // visual wheel transforms but it kinda doesn't work so uh oh
+        // foreach (TransformInfo transformInfo in transformInfos) {
+        //     transformInfo.transform.rotation = axleInfo.lWheel.transform.rotation *= Quaternion.Euler(0, 90, 0);
+        // }
     }
+    // void OnTriggerEnter(Collider coupler) {
+    //     foreach (CouplerInfo CouplerInfo in couplerInfos) {
+            
+    //     }
+    // }
 }
 [System.Serializable]
 public class AxleInfo {
@@ -53,6 +61,10 @@ public class AxleInfo {
 [System.Serializable]
 public class TransformInfo {
     public Transform transform;
+}
+[System.Serializable]
+public class CouplerInfo {
+    public Collider collider;
 }
 
 //Quaternion.Slerp(, axleInfo.rWheel.transform.rotation, 1)
