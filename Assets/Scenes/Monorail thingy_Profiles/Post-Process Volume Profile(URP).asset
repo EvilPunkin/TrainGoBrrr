@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Value: 1.5
   intensity:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 8
   scatter:
     m_OverrideState: 1
     m_Value: 0.35
@@ -90,10 +90,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.09
   contrast:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 17
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -124,6 +124,8 @@ MonoBehaviour:
   - {fileID: 4898865877390489494}
   - {fileID: 2922471803245593843}
   - {fileID: 5025764299097286678}
+  - {fileID: 7494748589454288513}
+  - {fileID: 4602831258224623905}
 --- !u!114 &2922471803245593843
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -188,7 +190,29 @@ MonoBehaviour:
     m_Value: 0
   blueOutBlueIn:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 120
+--- !u!114 &4602831258224623905
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: 
+  active: 1
+  lift:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.33364224}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.37071353}
 --- !u!114 &4898865877390489494
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -256,10 +280,26 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.15
   smoothness:
     m_OverrideState: 1
     m_Value: 0.2
   rounded:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
+--- !u!114 &7494748589454288513
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.01

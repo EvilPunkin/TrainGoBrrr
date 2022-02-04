@@ -8,14 +8,13 @@ public class TrainController : MonoBehaviour {
     public List<CouplerInfo> couplerInfos;
 
     public float maxMotorTorque;
-    public float maxSteeringAngle;
     public float maxBrakeTorque;
     public float suspension;
 
     public void FixedUpdate() {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
         float brake = maxBrakeTorque * Input.GetAxis("Horizontal");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        Debug.Log(motor);
         foreach (AxleInfo axleInfo in axleInfos) {
             if (axleInfo.motor) {
                 axleInfo.lWheel.motorTorque = motor;
@@ -25,10 +24,7 @@ public class TrainController : MonoBehaviour {
                 axleInfo.lWheel.brakeTorque = brake;
                 axleInfo.rWheel.brakeTorque = brake;
             }
-            if (axleInfo.steering) {
-                axleInfo.lWheel.steerAngle = steering;
-                axleInfo.rWheel.steerAngle = steering;
-            }
+
             if (axleInfo.suspension) {
                 axleInfo.lWheel.suspensionDistance = suspension;
                 axleInfo.rWheel.suspensionDistance = suspension;
@@ -53,10 +49,9 @@ public class TrainController : MonoBehaviour {
 public class AxleInfo {
     public WheelCollider lWheel;
     public WheelCollider rWheel;
-    public bool motor; // is this wheel attached to motor?
-    public bool brake; // does this wheel apply steer angle?
-    public bool steering; // does this wheel apply steer angle?
-    public bool suspension;
+    public bool motor; // use motor
+    public bool brake; // use brake
+    public bool suspension; // use suspension
 }
 [System.Serializable]
 public class TransformInfo {
